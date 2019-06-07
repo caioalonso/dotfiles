@@ -1,0 +1,54 @@
+export TERM=xterm-256color
+
+# cd by directory name
+shopt -s autocd
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=-1
+HISTFILESIZE=-1
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+# http://bashrcgenerator.com/ is cool
+export PS1="\[$(tput bold)\]\u\[$(tput sgr0)\]@\h \[$(tput bold)\]\w\[$(tput sgr0)\]\n\[$(tput sgr0)\]\[\033[38;5;2m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+# fff cd on exit
+f() { fff "$@"; cd "$(< ${HOME}/.cache/fff/fff.d)"; }
+export FFF_CD_FILE=${HOME}/.cache/fff/fff.d
+
+alias l='ls --literal --color=auto --group-directories-first'
+alias la='l -l --human-readable --all'
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gd='git diff'
+alias p='yay'
+alias tmux='tmux -2'
+alias ta='tmux attach'
+alias mkd='mkdir -pv'
+alias mutt='neomutt'
+alias xi='sudo xbps-install'
+alias xs='xbps-query --repository -s'
+alias xr='sudo xbps-remove'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
