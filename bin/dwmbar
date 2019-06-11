@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+layout=" $(xkblayout-state print %s)"
+
+vol=" · $(pamixer --get-volume)%"
+
+if [ "$HOSTNAME" != "desktop" ]; then
+    battery=$(acpi --battery | grep -i 'discharging')
+
+    # if it is not discharging, it must be charging
+    if [ -z "$battery" -a "$battery" != " " ]
+    then
+        battery="^"
+    else
+        battery=""
+    fi
+
+    battery=" · $battery$(acpi --battery | awk '{print $4}' | tr --delete ',')"
+else
+    battery=""
+fi
+
+clock=" · $(date +'%d/%m/%y (%a) %R')"
+
+status="$layout$vol$battery$clock"
+xsetroot -name "$status";
