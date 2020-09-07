@@ -9,3 +9,9 @@ rm -r dotfiles-tmp
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config checkout -- .
 ```
+
+You might also want to
+```
+config config --local status.showUntrackedFiles no
+```
+to keep `config status` cleaner.
