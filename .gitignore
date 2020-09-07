@@ -37,3 +37,7 @@ svn-commit.*
 tags
 TAGS
 
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -20,15 +20,21 @@
 [core]
     pager = less -FRSX
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    editor = nvim
+    quotepath = false
+    commitGraph = true
 
 [diff]
-    tool = vimdiff
+    tool = nvim -d
 
 [difftool]
     prompt = false
 
 [merge]
-    tool = vimdiff
+    tool = nvim -d
+
+[pull]
+    ff = only
 
 [alias]
     # branch
@@ -121,3 +127,5 @@
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+[gc]
+    writeCommitGraph = true
