@@ -1,0 +1,11 @@
+add_newline = false
+
+[character]
+style_success = "green"
+symbol = "$"
+
+[aws]
+disabled = true
+
+[ruby]
+symbol = "ruby "
