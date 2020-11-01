@@ -1,0 +1,37 @@
+PATH=$HOME/.rbenv/shims:$HOME/bin:$PATH:/usr/local/go/bin
+export EDITOR=vim
+export VISUAL=vim
+
+USER=$(id -un)
+HOST=$(hostname)
+BOLD=$(tput bold)
+GREEN=$(tput setaf 2)
+NORMAL=$(tput sgr0)
+
+PS1='$BOLD$USER$NORMAL@$HOST $PWD
+$GREEN$ $NORMAL'
+
+export TERM=xterm-256color
+
+HISTFILE=~/.mksh_history
+HISTSIZE=16383
+
+alias ls='exa'
+alias l='ls --group-directories-first'
+alias la='l -a'
+alias g='git'
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gco="git checkout"
+alias dce="docker-compose exec backend bundle exec"
+alias windows="sudo grub-reboot 2 && sudo reboot"
+alias ssh-sandbox="ssh \$(qeb tellus-sandbox-jobs | head -n 1)"
+alias ssh-staging="ssh \$(qeb tellus-staging-jobs | head -n 1)"
+alias ssh-dev="ssh \$(qeb tellus-dev-jobs | head -n 1)"
+alias ssh-prod="ssh \$(qeb tellus-prod-jobs | head -n 1)"
+alias ssh-whiskers="ssh \$(qeb Zilly-Whiskers-Prod | head -n 1)"
+alias be="bundle exec spring"
+alias brspec="bundle exec spring rspec"
+alias c='clear'
+alias config="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
